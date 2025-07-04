@@ -40,14 +40,21 @@ class HTTPResponse:
     
     def __post_init__(self):
         """Extract additional metadata from headers."""
-        self.content_type = self.headers.get('content-type', '').lower()
+        # Case-insensitive header lookup
+        content_type = ''
+        for key, value in self.headers.items():
+            if key.lower() == 'content-type':
+                content_type = value
+                break
+        self.content_type = content_type.lower()
         if not self.final_url:
             self.final_url = self.url
     
     @property
     def is_html(self) -> bool:
         """Check if response contains HTML content."""
-        return 'text/html' in self.content_type
+        ct = self.content_type.lower()
+        return any(html_type in ct for html_type in ['text/html', 'html', 'application/xhtml'])
     
     @property
     def is_binary(self) -> bool:

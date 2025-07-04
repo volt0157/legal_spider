@@ -226,6 +226,11 @@ class LegalSpider:
         # Check if it's HTML content
         if not response.is_html:
             self.stats['pages_skipped'] += 1
+            # DEBUG: Use logger to show exactly what's happening
+            self.logger.error(f"🔍 DEBUG spider.py: content_type='{response.content_type}'")
+            self.logger.error(f"🔍 DEBUG spider.py: is_html={response.is_html}")
+            self.logger.error(f"🔍 DEBUG spider.py: response type={type(response)}")
+            self.logger.error(f"🔍 DEBUG spider.py: content preview='{response.content[:100]}...'")
             self.logger.debug(f"Non-HTML content skipped: {url}")
             return
         

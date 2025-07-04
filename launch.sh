@@ -7,7 +7,7 @@
 # ============================================================================
 
 # === TARGET CONFIGURATION ===
-TARGET_URL="https://docs.python.org"
+TARGET_URL="https://www.athinorama.gr/"
 MAX_PAGES=1000
 MAX_DEPTH=3
 REQUESTS_PER_SECOND=1.0
@@ -16,7 +16,7 @@ REQUESTS_PER_SECOND=1.0
 OUTPUT_DIR="./results"
 OUTPUT_FILE="spider_results_$(date +%Y%m%d_%H%M%S).json"
 LOG_FILE="spider_log_$(date +%Y%m%d_%H%M%S).log"
-LOG_LEVEL="INFO"  # DEBUG, INFO, WARNING, ERROR
+LOG_LEVEL="DEBUG"  # DEBUG, INFO, WARNING, ERROR
 
 # === SPIDER CONFIGURATION ===
 USER_AGENT="SecuritySpider/1.0 (+https://yourcompany.com/spider-info)"
